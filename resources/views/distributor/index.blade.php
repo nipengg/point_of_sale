@@ -36,10 +36,10 @@
                                     <td>{{ $distributor->nama_distributor }}</td>
                                     <td>{{ $distributor->alamat }}</td>
                                     <td>{{ $distributor->telpon }}</td>
-                                    <td>{{ $distributor->created_at }}</td>
+                                    <td>{{ $distributor->created_at }}</td>\
                                     <td>
-                                        <a class="btn btn-success" href="{{url('/edit/distributor/'.$distributor->id_distributor)}}">Edit</a>
-                                        <a class="btn btn-danger" href="{{url('/delete/distributor/'.$distributor->id_distributor)}}">Delete</a>
+                                        <a class="btn btn-success btn-xs" href="{{url('/edit/distributor/'.$distributor->id_distributor)}}">Edit</a>
+                                        <a class="btn btn-danger btn-xs" href="{{url('/delete/distributor/'.$distributor->id_distributor)}}">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

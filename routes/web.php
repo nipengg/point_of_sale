@@ -48,3 +48,4 @@ Route::post('/store/pasok', 'PasokController@store');
 Route::get('/index/transaction', 'TransactionController@index');
 Route::get('/create/transaction', 'TransactionController@create');
 Route::post('/store/transaction', 'TransactionController@store');
+Route::get('/transaction/cetak_pdf', 'TransactionController@cetak_pdf');

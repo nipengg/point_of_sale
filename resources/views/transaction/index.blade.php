@@ -12,9 +12,15 @@
                             <div class="pull-left">
                                 <h3 class="panel-title">Data Transaction</h3>
                             </div>
+                            @if(Auth::user()->level == 'kasir')
                             <div class="pull-right">
                                 <a class="btn btn-success" href="{{url('create/transaction')}}"> Add new Transaction</a>
                             </div>
+                            @else
+                            <div class="pull-right">
+                                <a class="btn btn-success" href="{{url('transaction/cetak_pdf')}}" target="_blank"> Export PDF</a>
+                            </div>
+                            @endif
                         </div>
                         <br>
                         <div class="panel-body">

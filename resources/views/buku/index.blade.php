@@ -18,7 +18,7 @@
                         </div>
                         <br/>
                         <div class="panel-body">
-                            <table id="table_id" class="table table-hover" style="font-size: 10pt">
+                            <table id="table_id" class="table table-hover" style="font-size: 11pt">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -50,8 +50,8 @@
                                     <td>{{ $book->ppn }}</td>
                                     <td style="text-align: center">{{ $book->diskon }}</td>
                                     <td>
-                                        <a class="btn btn-success" href="{{url('/edit/book/'.$book->id_buku)}}">Edit</a>
-                                        <a class="btn btn-danger" href="{{url('/delete/book/'.$book->id_buku)}}">Delete</a>
+                                        <a class="btn btn-success btn-xs" href="{{url('/edit/book/'.$book->id_buku)}}">Edit</a>
+                                        <a class="btn btn-danger btn-xs" href="{{url('/delete/book/'.$book->id_buku)}}">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

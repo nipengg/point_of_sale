@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use App\Book;
 use App\User;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,5 +47,13 @@ class TransactionController extends Controller
                             ]);
 
         return redirect('/index/transaction')->with('success','Added successfully.');
+    }
+
+    public function cetak_pdf()
+    {
+    	$transactions = Transaction::all();
+ 
+    	$pdf = PDF::loadview('transaction_pdf',['transactions'=>$transactions]);
+    	return $pdf->stream();
     }
 }

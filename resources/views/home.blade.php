@@ -86,6 +86,7 @@
 									<li><a href="{{ url('/index/user') }}" class="">Data User</a></li>
 									<li><a href="{{ url('/index/distributor') }}" class="">Data Distributor</a></li>
 									<li><a href="{{ url('/index/pasok') }}" class="">Data Pasok</a></li>
+									<li><a href="{{ url('/index/transaction') }}" class="">Data Transaction</a></li>
 								</ul>
 							</div>
 						</li>
