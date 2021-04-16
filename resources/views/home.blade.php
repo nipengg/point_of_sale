@@ -74,7 +74,10 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="{{ url('/index/book') }}" class=""><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						@if(Auth::user()->level == 'kasir')
 						<li><a href="{{ url('/index/transaction') }}" class=""><i class="lnr lnr-cart"></i> <span>Transaction</span></a></li>
+						@endif
+						@if(Auth::user()->level == 'manager' || Auth::user()->level == 'admin')
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-inbox"></i> <span>Data Master</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
@@ -86,6 +89,18 @@
 								</ul>
 							</div>
 						</li>
+						<li>
+							<a href="#subPages1" data-toggle="collapse" class="collapsed"><i class="lnr lnr-bookmark"></i> <span>Laporan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages1" class="collapse ">
+								<ul class="nav">
+									<li><a href="{{ url('/index/book') }}" class="">Data Buku</a></li>
+									<li><a href="{{ url('/index/user') }}" class="">Data User</a></li>
+									<li><a href="{{ url('/index/distributor') }}" class="">Data Distributor</a></li>
+									<li><a href="{{ url('/index/pasok') }}" class="">Data Pasok</a></li>
+								</ul>
+							</div>
+						</li>
+						@endif
 					</ul>
 				</nav>
 			</div>

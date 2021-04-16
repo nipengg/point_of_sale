@@ -26,6 +26,7 @@
                                     <th>Address</th>
                                     <th>Telephone</th>
                                     <th>Created At</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -36,6 +37,10 @@
                                     <td>{{ $distributor->alamat }}</td>
                                     <td>{{ $distributor->telpon }}</td>
                                     <td>{{ $distributor->created_at }}</td>
+                                    <td>
+                                        <a class="btn btn-success" href="{{url('/edit/distributor/'.$distributor->id_distributor)}}">Edit</a>
+                                        <a class="btn btn-danger" href="{{url('/delete/distributor/'.$distributor->id_distributor)}}">Delete</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 </tbody>

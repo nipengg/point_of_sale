@@ -9,12 +9,6 @@
                  document.getElementById("harga").value = $(this).attr('data-harga_buku');
                  $('#myModal').modal('hide');
              });
- 
-             $(document).on('click', '.pilih_anggota', function (e) {
-                 document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
-                 document.getElementById("anggota_nama").value = $(this).attr('data-anggota_nama');
-                 $('#myModal2').modal('hide');
-             });
            
               $(function () {
                  $("#lookup, #lookup2").dataTable();
@@ -25,6 +19,10 @@ function check() {
     var harga = parseInt(document.getElementById("harga").value);
     var jumlah = parseInt(document.getElementById("jumlah").value);
     document.getElementById('total').value = harga * jumlah;
+
+    var bayar = parseInt(document.getElementById("bayar").value);
+        var total = parseInt(document.getElementById("total").value);
+        document.getElementById('kembalian').value = bayar - total;
 }
 </script>
 
@@ -45,7 +43,7 @@ function check() {
                                         <div class="form-group">
                                             <strong>Book :</strong>
                                             <input id="buku_judul" type="text" class="form-control" placeholder="Book" readonly="" required>
-                                            <input id="buku_id" type="hidden" name="buku_id" value="{{ old('buku_id') }}" required readonly="">
+                                            <input id="buku_id" type="hidden" name="buku_id" required readonly="">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-info btn-secondary" data-toggle="modal" data-target="#myModal"><b>Cari Buku</b> <span class="fa fa-search"></span></button>
                                             </span>
@@ -65,12 +63,24 @@ function check() {
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
+                                            <strong>Bayar :</strong>
+                                            <input type="number" id="bayar" name="bayar" class="form-control" placeholder="Bayar" onkeyup="check();" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
                                             <strong>Total Harga :</strong>
                                             <input type="number" id="total" name="total" class="form-control" placeholder="Total harga" onkeyup="check();" readonly="" required>
                                         </div>
                                     </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Kembalian :</strong>
+                                            <input type="number" id="kembalian" name="kembalian" class="form-control" placeholder="Kembalian" readonly="" required>
+                                        </div>
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                            <button type="submit" id="submit" class="btn btn-success">Submit</button>
+                                            <button type="submit" id="submit" class="btn btn-success">Add</button>
                                     </div>
                                 </div>
                             </form>
@@ -106,7 +116,7 @@ function check() {
                               </thead>
                               <tbody>
                                   @foreach($bukus as $data)
-                                  <tr class="pilih" data-buku_id="<?php echo $data->id; ?>" data-buku_judul="<?php echo $data->judul; ?>" data-harga_buku="<?php echo $data->harga_jual; ?>" >
+                                  <tr class="pilih" data-buku_id="<?php echo $data->id_buku; ?>" data-buku_judul="<?php echo $data->judul; ?>" data-harga_buku="<?php echo $data->harga_jual; ?>" >
                                       <td>{{$data->judul}}</td>
                                       <td>{{$data->isbn}}</td>
                                       <td>{{$data->penulis}}</td>

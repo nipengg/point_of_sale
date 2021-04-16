@@ -34,9 +34,9 @@
                                 <tbody>
                                 @foreach ($transactions as $transaction)
                                 <tr>
-                                    <td>{{ $transaction->id }}</td>
-                                    <td>{{ $transaction->id_buku }}</td>
-                                    <td>{{ $transaction->id_kasir }}</td>
+                                    <td>{{ $transaction->id_transaksi }}</td>
+                                    <td>{{ $transaction->book['judul'] }}</td>
+                                    <td>{{ $user = App\User::find($transaction->id_kasir)->name }}</td>
                                     <td>{{ $transaction->jumlah_buku }}</td>
                                     <td>{{ $transaction->bayar }}</td>
                                     <td>{{ $transaction->kembalian }}</td>

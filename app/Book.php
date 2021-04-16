@@ -14,4 +14,9 @@ class Book extends Model
     {
     	return $this->hasMany('App\Pasok', 'id_buku');
     }
+
+    public function transaction()
+    {
+    	return $this->hasMany('App\Transaction', 'id_buku');
+    }
 }

@@ -23,7 +23,7 @@ class CreatePasoksTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_distributor')->references('id_distributor')->on('distributions')->onDelete('cascade');
-            $table->foreign('id_buku')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('id_buku')->references('id_buku')->on('books')->onDelete('cascade');
         });
     }
 

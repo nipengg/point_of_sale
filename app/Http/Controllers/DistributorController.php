@@ -34,4 +34,25 @@ class DistributorController extends Controller
 
         return redirect('/index/distributor')->with('success','Added successfully.');
     }
+
+    public function edit($id_distributor){
+        $distributors = Distributor::findOrFail($id_distributor);
+        return view('distributor.edit', compact('distributors'));
+    }
+
+    public function update(Request $request, $id_distributor){
+        Distributor::find($id_distributor)->update([
+               'nama_distributor' => $request->get('name'),
+               'alamat' => $request->get('alamat'),
+               'telpon' => $request->get('telpon'),
+        ]);
+
+        return redirect('/index/distributor')->with('success','Distributor edited successfully.');
+    }
+
+    public function destroy($id_distributor)
+    {
+        Distributor::find($id_distributor)->delete();
+        return redirect('/index/distributor')->with('success','Distributor deleted successfully.');
+    }
 }
