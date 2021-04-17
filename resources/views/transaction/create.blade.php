@@ -7,6 +7,8 @@
                  document.getElementById("buku_judul").value = $(this).attr('data-buku_judul');
                  document.getElementById("buku_id").value = $(this).attr('data-buku_id');
                  document.getElementById("harga").value = $(this).attr('data-harga_buku');
+                 document.getElementById("discount").value = $(this).attr('data-diskon_buku');
+                 document.getElementById("ppn").value = $(this).attr('data-ppn_buku');
                  $('#myModal').modal('hide');
              });
            
@@ -18,7 +20,12 @@
 function check() {
     var harga = parseInt(document.getElementById("harga").value);
     var jumlah = parseInt(document.getElementById("jumlah").value);
-    document.getElementById('total').value = harga * jumlah;
+    var ppn = parseFloat(document.getElementById("ppn").value);
+    var diskon = parseFloat(document.getElementById("discount").value);
+    var harga_ppn = (harga * ppn/100);
+    var harga_diskon = (harga * diskon/100);
+    var total = ((harga + harga_ppn) - harga_diskon);
+    document.getElementById('total').value = total * jumlah;
 
     var bayar = parseInt(document.getElementById("bayar").value);
     var total = parseInt(document.getElementById("total").value);
@@ -65,6 +72,18 @@ function check() {
                                         <div class="form-group">
                                             <strong>Harga :</strong>
                                             <input type="number" id="harga" name="harga" class="form-control" placeholder="Harga" onkeyup="check()" readonly="" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>PPN :</strong>
+                                            <input type="number" id="ppn" name="ppn" class="form-control" placeholder="PPN" onkeyup="check()" readonly="" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Discount :</strong>
+                                            <input type="number" id="discount" name="discount" class="form-control" placeholder="Discount" onkeyup="check()" readonly="" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -125,16 +144,20 @@ function check() {
                                       <th>Penulis</th>
                                       <th>Tahun</th>
                                       <th>Stok</th>
+                                      <th>PPN</th>
+                                      <th>Discount</th>
                                   </tr>
                               </thead>
                               <tbody>
                                   @foreach($bukus as $data)
-                                  <tr class="pilih" data-buku_id="<?php echo $data->id_buku; ?>" data-buku_judul="<?php echo $data->judul; ?>" data-harga_buku="<?php echo $data->harga_jual; ?>" >
+                                  <tr class="pilih" data-buku_id="<?php echo $data->id_buku; ?>" data-buku_judul="<?php echo $data->judul; ?>" data-harga_buku="<?php echo $data->harga_jual; ?>" data-ppn_buku="<?php echo $data->ppn; ?>" data-diskon_buku="<?php echo $data->diskon; ?>" >
                                       <td>{{$data->judul}}</td>
                                       <td>{{$data->isbn}}</td>
                                       <td>{{$data->penulis}}</td>
                                       <td>{{$data->tahun_terbit}}</td>
                                       <td>{{$data->jumlah_buku}}</td>
+                                      <td>{{ $data->ppn }}%</td>
+                                      <td>{{ $data->diskon }}%</td>
                                   </tr>
                                   @endforeach
                               </tbody>

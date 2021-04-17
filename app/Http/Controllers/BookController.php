@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use PDF;
 
 class BookController extends Controller
 {
@@ -61,5 +62,13 @@ class BookController extends Controller
     {
         Book::find($id_buku)->delete();
         return redirect('/index/book')->with('success','Book deleted successfully.');
+    }
+
+    public function cetak_pdf()
+    {
+    	$books = Book::all();
+ 
+    	$pdf = PDF::loadview('pdf/book_pdf',['books'=>$books]);
+    	return $pdf->stream();
     }
 }

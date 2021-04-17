@@ -31,6 +31,7 @@ Route::get('/index/book', 'BookController@index');
 Route::get('/edit/book/{id_buku}', 'BookController@edit');
 Route::post('/update/book/{id_buku}', 'BookController@update');
 Route::get('/delete/book/{id_buku}', 'BookController@destroy');
+Route::get('/book/cetak_pdf', 'BookController@cetak_pdf');
 
 //User
 Route::get('/index/user', 'UserController@index');

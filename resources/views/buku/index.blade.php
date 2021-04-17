@@ -14,6 +14,7 @@
                             </div>
                             <div class="pull-right">
                                 <a class="btn btn-success" href="{{url('create/book')}}"> Add new Book</a>
+                                <a class="btn btn-success" href="{{url('book/cetak_pdf')}}" target="_blank"> Export PDF</a>
                             </div>
                         </div>
                         <br/>
@@ -47,8 +48,8 @@
                                     <td>{{ $book->jumlah_buku }}</td>
                                     <td>@currency( $book->harga_pokok )</td>
                                     <td>@currency( $book->harga_jual )</td>
-                                    <td>@currency( $book->ppn )</td>
-                                    <td style="text-align: center">{{ $book->diskon }}</td>
+                                    <td>{{ $book->ppn }}%</td>
+                                    <td style="text-align: center">{{ $book->diskon }}%</td>
                                     <td>
                                         <a class="btn btn-success btn-xs" href="{{url('/edit/book/'.$book->id_buku)}}">Edit</a>
                                         <a class="btn btn-danger btn-xs" href="{{url('/delete/book/'.$book->id_buku)}}">Delete</a>
