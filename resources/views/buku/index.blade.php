@@ -45,9 +45,9 @@
                                     <td>{{ $book->penerbit }}</td>
                                     <td>{{ $book->tahun_terbit }}</td>
                                     <td>{{ $book->jumlah_buku }}</td>
-                                    <td>{{ $book->harga_pokok }}</td>
-                                    <td>{{ $book->harga_jual }}</td>
-                                    <td>{{ $book->ppn }}</td>
+                                    <td>@currency( $book->harga_pokok )</td>
+                                    <td>@currency( $book->harga_jual )</td>
+                                    <td>@currency( $book->ppn )</td>
                                     <td style="text-align: center">{{ $book->diskon }}</td>
                                     <td>
                                         <a class="btn btn-success btn-xs" href="{{url('/edit/book/'.$book->id_buku)}}">Edit</a>

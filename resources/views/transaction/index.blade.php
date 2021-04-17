@@ -31,10 +31,11 @@
                                     <th>Buku</th>
                                     <th>Kasir</th>
                                     <th>Jumlah Buku</th>
+                                    <th>Total</th>
                                     <th>Bayar</th>
                                     <th>Kembalian</th>
-                                    <th>Total</th>
                                     <th>Created At</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -44,10 +45,13 @@
                                     <td>{{ $transaction->book['judul'] }}</td>
                                     <td>{{ $user = App\User::find($transaction->id_kasir)->name }}</td>
                                     <td>{{ $transaction->jumlah_buku }}</td>
-                                    <td>{{ $transaction->bayar }}</td>
-                                    <td>{{ $transaction->kembalian }}</td>
-                                    <td>{{ $transaction->total_harga }}</td>
+                                    <td>@currency( $transaction->total_harga )</td>
+                                    <td>@currency( $transaction->bayar )</td>
+                                    <td>@currency( $transaction->kembalian )</td>
                                     <td>{{ $transaction->tanggal }}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs" target="_blank;" href="{{url('/transaction/cetak_struk/'.$transaction->id_transaksi)}}">Cetak Struk</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 </tbody>

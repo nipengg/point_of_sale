@@ -21,8 +21,20 @@ function check() {
     document.getElementById('total').value = harga * jumlah;
 
     var bayar = parseInt(document.getElementById("bayar").value);
-        var total = parseInt(document.getElementById("total").value);
-        document.getElementById('kembalian').value = bayar - total;
+    var total = parseInt(document.getElementById("total").value);
+    document.getElementById('kembalian').value = bayar - total;
+
+    var kembalian = parseInt(document.getElementById("kembalian").value);
+    if(kembalian < 0){
+       document.getElementById('submit').disabled = true;
+       document.getElementById('message').style.color = 'red';
+       document.getElementById('message').innerHTML = 'Uang Belum Cukup';
+    }
+    else{
+       document.getElementById('submit').disabled = false;
+       document.getElementById('message').style.color = 'green';
+       document.getElementById('message').innerHTML = '';
+    }
 }
 </script>
 
@@ -76,11 +88,12 @@ function check() {
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Kembalian :</strong>
-                                            <input type="number" id="kembalian" name="kembalian" class="form-control" placeholder="Kembalian" readonly="" required>
+                                            <input type="number" id="kembalian" name="kembalian" class="form-control" onkeyup="check();" placeholder="Kembalian" readonly="" required>
+                                            <span id='message'></span>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                            <button type="submit" id="submit" class="btn btn-success">Add</button>
+                                            <button type="submit" id="submit" disabled class="btn btn-success">Add</button>
                                     </div>
                                 </div>
                             </form>

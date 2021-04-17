@@ -53,7 +53,15 @@ class TransactionController extends Controller
     {
     	$transactions = Transaction::all();
  
-    	$pdf = PDF::loadview('transaction_pdf',['transactions'=>$transactions]);
+    	$pdf = PDF::loadview('pdf/transaction_pdf',['transactions'=>$transactions]);
+    	return $pdf->stream();
+    }
+
+    public function cetak_struk($id_transaksi)
+    {
+    	$transactions = Transaction::findOrFail($id_transaksi);
+ 
+    	$pdf = PDF::loadview('pdf/transaction_struk',['transactions'=>$transactions]);
     	return $pdf->stream();
     }
 }

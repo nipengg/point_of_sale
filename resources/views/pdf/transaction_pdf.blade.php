@@ -23,9 +23,9 @@
                 <th>Buku</th>
                 <th>Kasir</th>
                 <th>Jumlah Buku</th>
+                <th>Total</th>
                 <th>Bayar</th>
                 <th>Kembalian</th>
-                <th>Total</th>
                 <th>Created At</th>
             </tr>
         </thead>
@@ -36,9 +36,9 @@
               <td>{{ $transaction->book['judul'] }}</td>
               <td>{{ $user = App\User::find($transaction->id_kasir)->name }}</td>
               <td>{{ $transaction->jumlah_buku }}</td>
-              <td>{{ $transaction->bayar }}</td>
-              <td>{{ $transaction->kembalian }}</td>
-              <td>{{ $transaction->total_harga }}</td>
+              <td>@currency( $transaction->total_harga )</td>
+              <td>@currency( $transaction->bayar )</td>
+              <td>@currency( $transaction->kembalian )</td>
               <td>{{ $transaction->tanggal }}</td>
             </tr>
         @endforeach
